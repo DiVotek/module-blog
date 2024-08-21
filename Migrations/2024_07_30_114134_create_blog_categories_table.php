@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('views')->default(0);
             BlogCategory::timestampFields($table);
         });
-        StaticPage::createSystemPage('Blog', 'blog::blog-component');
+        StaticPage::createSystemPage('Blog','blog', path:'blog::blog-component');
     }
 
     public function down(): void
