@@ -14,6 +14,7 @@ class EditBlogArticle extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\ViewAction::make()->url(fn($record) => $record->route())->openUrlInNewTab(true),
         ];
     }
 }

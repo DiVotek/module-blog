@@ -8,6 +8,7 @@ class BlogCategoryComponent extends Component
 {
     public function render()
     {
-        return view('blog::livewire.blog-category-component');
+        $component = setting(config('settings.blog.category.design'), 'blog-category.default');
+        return view('template::' . $component);
     }
 }
