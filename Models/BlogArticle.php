@@ -8,6 +8,7 @@ use App\Traits\HasRoute;
 use App\Traits\HasSlug;
 use App\Traits\HasSorting;
 use App\Traits\HasStatus;
+use App\Traits\HasTeam;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTable;
 use App\Traits\HasTemplate;
@@ -31,6 +32,7 @@ class BlogArticle extends Model
     use HasBreadcrumbs;
     use HasViews;
     use HasTemplate;
+    use HasTeam;
 
     protected $fillable = [
         'blog_category_id',
