@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Blog\Models\BlogCategory;
 use Modules\Seo\Admin\SeoResource\Pages\SeoRelationManager;
+use Nwidart\Modules\Facades\Module;
 
 class BlogCategoryResource extends Resource
 {
@@ -50,6 +51,12 @@ class BlogCategoryResource extends Resource
     }
     public static function form(Form $form): Form
     {
+        $authorsField = [];
+        if (Module::find('Team') && Module::find('Team')->isEnabled()) {
+            $authorsField = [
+                Schema::getAuthors()
+            ];
+        }
         return $form
             ->schema([
                 Section::make()->schema([
@@ -57,7 +64,7 @@ class BlogCategoryResource extends Resource
                     Schema::getSlug(),
                     Schema::getStatus(),
                     Schema::getSorting(),
-                    Schema::getAuthors(),
+                    ...$authorsField,
                     Schema::getImage('image', isMultiple: false),
                 ])
                 //

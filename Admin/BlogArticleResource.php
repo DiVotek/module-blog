@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Modules\Blog\Models\BlogArticle;
 use Modules\Blog\Models\BlogCategory;
 use Modules\Seo\Admin\SeoResource\Pages\SeoRelationManager;
+use Nwidart\Modules\Facades\Module;
 
 class BlogArticleResource extends Resource
 {
@@ -52,6 +53,12 @@ class BlogArticleResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $authorsField = [];
+        if (Module::find('Team') && Module::find('Team')->isEnabled()) {
+            $authorsField = [
+                Schema::getAuthors()
+            ];
+        }
         return $form
             ->schema([
                 Section::make()->schema([
@@ -60,7 +67,7 @@ class BlogArticleResource extends Resource
                     Schema::getStatus(),
                     Schema::getSorting(),
                     Schema::getSelect('blog_category_id')->relationship('category', 'name')->required(),
-                    Schema::getAuthors(),
+                    ...$authorsField,
                     Schema::getImage('image', isMultiple: false),
                 ])
                 //
