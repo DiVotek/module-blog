@@ -60,6 +60,7 @@ class BlogArticleResource extends Resource
                     Schema::getStatus(),
                     Schema::getSorting(),
                     Schema::getSelect('blog_category_id')->relationship('category', 'name')->required(),
+                    Schema::getAuthors(),
                     Schema::getImage('image', isMultiple: false),
                 ])
                 //

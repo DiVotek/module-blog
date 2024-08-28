@@ -57,6 +57,7 @@ class BlogCategoryResource extends Resource
                     Schema::getSlug(),
                     Schema::getStatus(),
                     Schema::getSorting(),
+                    Schema::getAuthors(),
                     Schema::getImage('image', isMultiple: false),
                 ])
                 //
