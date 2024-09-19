@@ -36,6 +36,7 @@ class BlogArticle extends Model
 
     protected $fillable = [
         'blog_category_id',
+        'image',
         'name',
     ];
 

@@ -41,7 +41,8 @@ class BlogCategory extends Model
     }
 
     protected $fillable = [
-        'name'
+        'name',
+        'image',
     ];
 
     public function articles(): HasMany
